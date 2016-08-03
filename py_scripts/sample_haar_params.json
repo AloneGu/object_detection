@@ -1,0 +1,7 @@
+{
+  "SCALEFACTOR": "1.1",
+  "MINNEIGHBORS": "5",
+  "MINSIZE": "(30, 30)",
+  "MAXSIZE": "(96, 96)",
+  "FLAGS": "CV_HAAR_SCALE_IMAGE"
+}

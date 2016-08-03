@@ -1,0 +1,11 @@
+{
+  "WINSIZE": "(96,96)",
+  "BLOCKSIZE": "(16,16)",
+  "BLOCKSTRIDE": "(8,8)",
+  "CELLSIZE": "(8,8)",
+  "NBINS": "9",
+  "winStride": "(8, 8)",
+  "padding": "(0, 0)",
+  "scale": "1.01",
+  "finalThreshold": "2"
+}
