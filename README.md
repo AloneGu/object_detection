@@ -5,7 +5,8 @@ Author: Wei Gu
 Please open this document with stackedit.
 
 ##Design:
-Assume the python tool named human_detection_api.py
+Assume the python tool named human_detection_api.py.
+
 all the python files are under py_scripts.
 ###**1. Input**
 **FLAG SETTING:**
