@@ -6,7 +6,6 @@ Please open this document with stackedit.
 
 ##Design:
 Assume the python tool named human_detection_api.py
-bit bucket link: https://bitbucket.org/percolata/ds-human-detection, **branch:develop** .
 all the python files are under py_scripts.
 ###**1. Input**
 **FLAG SETTING:**
