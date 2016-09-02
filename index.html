@@ -1,57 +1,165 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Object detection by AloneGu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Object detection</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/AloneGu/object_detection" class="btn">View on GitHub</a>
-      <a href="https://github.com/AloneGu/object_detection/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/AloneGu/object_detection/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <div class="wrapper">
+      <header>
+        <h1>Object detection</h1>
+        <p></p>
 
-    <section class="main-content">
-      <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <p class="view"><a href="https://github.com/AloneGu/object_detection">View the Project on GitHub <small>AloneGu/object_detection</small></a></p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+
+        <ul>
+          <li><a href="https://github.com/AloneGu/object_detection/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/AloneGu/object_detection/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/AloneGu/object_detection">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="test-human-detection-api" class="anchor" href="#test-human-detection-api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test Human Detection API</h1>
+
+<p>Author: Wei Gu</p>
+
+<p>Please open this document with stackedit.</p>
+
+<h2>
+<a id="design" class="anchor" href="#design" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design:</h2>
+
+<p>Assume the python tool named human_detection_api.py.</p>
+
+<p>all the python files are under py_scripts.</p>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a id="1-input" class="anchor" href="#1-input" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>1. Input</strong>
+</h3>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+<p><strong>FLAG SETTING:</strong></p>
 
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
+<h4>
+<a id="1-source-file-you-can-only-choose-one-mode-to-perform-human-detection" class="anchor" href="#1-source-file-you-can-only-choose-one-mode-to-perform-human-detection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>[1]. source file: you can only choose one mode to perform human detection</h4>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p><strong>-x,--xml:</strong> the trained xml file.
+<strong>-feat,--feature:</strong> hog/haar, what kind of feature used.
+<strong>--hog_config</strong> : hog_config.json, the json file contains the setting for hog feature:
+example ( also the default setting, if you do not set config file, it will use following setting for hog feature ):</p>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<pre><code>{
+"WINSIZE":"(96,96)",
+"BLOCKSIZE":"(16,16)",
+"BLOCKSTRIDE":"(8,8)",
+"CELLSIZE":"(8,8)",
+"NBINS":"9",
+"winStride" : "(8, 8)",
+"padding ": "(0, 0)",
+"scale" : "1.01",
+"finalThreshold" : "2"
+}
+</code></pre>
 
-<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p><strong>--haar_config</strong> : haar_config.json, the json file contains the setting for haar feature:
+example ( also the default setting, if you do not set config file, it will use following setting for haar feature ):</p>
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+<pre><code>{
+"SCALEFACTOR":"1.1",
+"MINNEIGHBORS": "5",
+"MINSIZE":"(30, 30)",
+"MAXSIZE":"(96, 96)",
+"FLAGS":"CV_HAAR_SCALE_IMAGE"
+}
+</code></pre>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<p><strong>-v, --video :</strong> video file to perform human detection ( video mode, default = None )
+<strong>-img, --image:</strong> image file to perform human detection ( image mode, default = None ), if the input file path is a folder, then perform human detection on all the image files under this folder. ( <strong>NOTES: the image file name or image directory path should contains placement name like 8600154 !!!</strong> )
+<strong>-b,--background:</strong> background image, default = None, if you have set the background image, the api will use this image to do the background subtraction, otherwise it will generate a background first under video mode.</p>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/AloneGu/object_detection">Object detection</a> is maintained by <a href="https://github.com/AloneGu">AloneGu</a>.</span>
+<h4>
+<a id="2-detection-on-frames-" class="anchor" href="#2-detection-on-frames-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>*<em>2. detection on frames *</em>
+</h4>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+<p>--org_frame: True/False ：True means perform human detection on the original whole frame, default = True
+--foreground: True/False: True means perform human detection on the foreground, default = False ( background image needed under image mode )
+--fgmask: True/False: True means perform human detection on the fgmask frame, default = False</p>
+
+<h4>
+<a id="3-save-result" class="anchor" href="#3-save-result" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>3. save result</strong>
+</h4>
+
+<p>--output_dir: the directory to save the algo result</p>
+
+<p><strong>video mode:</strong>
+suppose the video name is 8600141-2015-10-13-8600141_video_2015-10-13-14-15-38_1.3gp
+currently just show the detection results on the video.</p>
+
+<p><strong>image mode:</strong>
+suppose the image name is 8600141-2015-10-13-8600141_video_2015-10-13-14-15-38_1_2500.png</p>
+
+<p>[1]. draw boxes of people and save the image as : output_dir/image_result/images/8600141-2015-10-13-8600141_video_2015-10-13-14-15-38_1_2500_(hog/haar)_(origin_frame/foreground/fgmask).png</p>
+
+<p>suppose the image directory is 8600141_image</p>
+
+<p>[2]. save the count result in a csv file ( if the input is a image directory ):
+output_dir/image_result/csv_result/8600141_image_result.csv
+format:
+image name, human counts</p>
+
+<h4>
+<a id="4-example-usage" class="anchor" href="#4-example-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>4. Example usage:</strong>
+</h4>
+
+<p>[1]. perform human detection on a image ( with/without background ):
+haar feature without background subtraction:</p>
+
+<pre><code>cd py_scripts
+python test_human_detection_api.py -x ../xmls/haarcascade_frontalface_default.xml -img ../test_images/face_test.png -f haar -o '/tmp/'
+</code></pre>
+
+<p><img src="https://lh3.googleusercontent.com/-cMbQJjwPDUg/VjiEmJ3zfjI/AAAAAAAAAMA/4kebhrBulW4/s0/123.JPG" alt="enter image description here" title="123.JPG"></p>
+
+<p>hog feature with background subtraction:</p>
+
+<pre><code>cd py_scripts
+ python test_human_detection_api.py -x ../xmls/stable_8600154.xml -img ../test_images/8600154_test/3050.png -f hog -b ../backgrounds/8600154_stable.png --org_frame False --foreground True -o '/tmp/'
+</code></pre>
+
+<p><img src="https://lh3.googleusercontent.com/-vMUKk-4r9GA/VjnTkKV3D_I/AAAAAAAAAN0/r8iEe0ZM8Ak/s0/newhog.JPG" alt="enter image description here" title="newhog.JPG">
+[2]. perform human detection on many images:</p>
+
+<pre><code>   cd py_scripts
+   python test_human_detection_api.py -x ../xmls/stable_8600154.xml -img ../test_images/8600154_test/ --org_frame False --foreground True -b ../backgrounds/8600154_stable.png -o ~/Documents/tmp_test/
+</code></pre>
+
+<p>you will see the result saved under ~/Documents/tmp_test/
+  <img src="https://lh3.googleusercontent.com/-axBgVl2ihvg/VjnSBqEysVI/AAAAAAAAANA/1SWd1iAZgLU/s0/11112.JPG" alt="enter image description here" title="11112.JPG">
+  <img src="https://lh3.googleusercontent.com/-ydCKA2KP7Wo/VjnSGn-huSI/AAAAAAAAANQ/aoeT7839Uv0/s0/ddfs.JPG" alt="enter image description here" title="ddfs.JPG">
+  <img src="https://lh3.googleusercontent.com/-Crn2JdwuCHE/VjnSOzQVS-I/AAAAAAAAANc/QN3752hfzuU/s0/sdfsdf.JPG" alt="enter image description here" title="sdfsdf.JPG"></p>
+
+<p>[3]. perform human detection on video ( hog default setting, without input background, on foreground):</p>
+
+<pre><code>cd py_scripts
+python test_human_detection_api.py -x ../xmls/stable_8600154.xml -v ../videos/8600154_es-2015-07-25-17-45-01_1_89919.3gp --org_frame False --foreground True
+</code></pre>
+
+<p>you will see a window shows the background generated, and a dynamic window shows the detection result.<img src="https://lh3.googleusercontent.com/-y1w4RoUxaaw/VjnOuXurTwI/AAAAAAAAAMw/6Zr7qHAwOFQ/s0/dya.JPG" alt="enter image description here" title="dya.JPG"></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/AloneGu">AloneGu</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
-
-    </section>
-
-  
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
   </body>
 </html>
